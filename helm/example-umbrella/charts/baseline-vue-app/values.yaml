@@ -1,0 +1,300 @@
+# Default values for baseline-vue-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: krumware/baseline-vue-app
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets:
+  - name: docker-push-user
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+env:
+- name: APP_NAME
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: APP_NAME
+- name: APP_ENV
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: APP_ENV
+- name: APP_KEY
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: APP_KEY
+- name: APP_DEBUG
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: APP_DEBUG
+- name: APP_URL
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: APP_URL
+- name: LOG_CHANNEL
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: LOG_CHANNEL
+- name: LOG_DEPRECATIONS_CHANNEL
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: LOG_DEPRECATIONS_CHANNEL
+- name: LOG_LEVEL
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: LOG_LEVEL
+- name: DB_CONNECTION
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: DB_CONNECTION
+- name: DB_HOST
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: DB_HOST
+- name: DB_PORT
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: DB_PORT
+- name: DB_DATABASE
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: DB_DATABASE
+- name: DB_USERNAME
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: DB_USERNAME
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: DB_PASSWORD
+- name: BROADCAST_DRIVER
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: BROADCAST_DRIVER
+- name: CACHE_DRIVER
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: CACHE_DRIVER
+- name: FILESYSTEM_DRIVER
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: FILESYSTEM_DRIVER
+- name: QUEUE_CONNECTION
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: QUEUE_CONNECTION
+- name: SESSION_DRIVER
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: SESSION_DRIVER
+- name: SESSION_LIFETIME
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: SESSION_LIFETIME
+- name: MEMCACHED_HOST
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MEMCACHED_HOST
+- name: REDIS_HOST
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: REDIS_HOST
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: REDIS_PASSWORD
+- name: REDIS_PORT
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: REDIS_PORT
+- name: MAIL_MAILER
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_MAILER
+- name: MAIL_HOST
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_HOST
+- name: MAIL_PORT
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_PORT
+- name: MAIL_USERNAME
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_USERNAME
+- name: MAIL_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_PASSWORD
+- name: MAIL_ENCRYPTION
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_ENCRYPTION
+- name: MAIL_FROM_ADDRESS
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_FROM_ADDRESS
+- name: MAIL_FROM_NAME
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MAIL_FROM_NAME
+- name: AWS_ACCESS_KEY_ID
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: AWS_ACCESS_KEY_ID
+- name: AWS_SECRET_ACCESS_KEY
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: AWS_SECRET_ACCESS_KEY
+- name: AWS_DEFAULT_REGION
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: AWS_DEFAULT_REGION
+- name: AWS_BUCKET
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: AWS_BUCKET
+- name: AWS_USE_PATH_STYLE_ENDPOINT
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: AWS_USE_PATH_STYLE_ENDPOINT
+- name: PUSHER_APP_ID
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: PUSHER_APP_ID
+- name: PUSHER_APP_KEY
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: PUSHER_APP_KEY
+- name: PUSHER_APP_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: PUSHER_APP_SECRET
+- name: PUSHER_APP_CLUSTER
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: PUSHER_APP_CLUSTER
+- name: MIX_PUSHER_APP_KEY
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MIX_PUSHER_APP_KEY
+- name: MIX_PUSHER_APP_CLUSTER
+  valueFrom:
+    secretKeyRef:
+      name: vue-app-secret
+      key: MIX_PUSHER_APP_CLUSTER
