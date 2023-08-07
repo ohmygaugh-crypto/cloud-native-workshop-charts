@@ -26,17 +26,17 @@ appVersion: "1.16.0"
 dependencies:
 - name: python-docs-hello-world
   version: "0.1.0"
-  repository: "file://./charts/python-docs-hello-world"
+  repository: "file://../python-docs-hello-world"
   condition: python-docs-hello-world.enabled
 - name: example-laravel-app
   version: "0.1.0"
-  repository: "file://./charts/example-laravel-app"
+  repository: "file://../example-laravel-app"
   condition: example-laravel-app.enabled
 - name: baseline-vue-app
   version: "0.1.0"
-  repository: "file://./charts/baseline-vue-app"
+  repository: "file://../baseline-vue-app"
   condition: baseline-vue-app.enabled
 - name: baseline-react-app
   version: "0.1.0"
-  repository: "file://./charts/baseline-react-app"
+  repository: "file://../baseline-react-app"
   condition: baseline-react-app.enabled

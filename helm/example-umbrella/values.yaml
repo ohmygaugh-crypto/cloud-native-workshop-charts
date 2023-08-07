@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 example-laravel-app:
-  enabled: true
+  enabled: false
   service:
     type: ClusterIP
     port: 80
@@ -35,7 +35,7 @@ example-laravel-app:
 
 
 baseline-vue-app:
-  enabled: true
+  enabled: false
   service:
     type: ClusterIP
     port: 80
@@ -67,7 +67,7 @@ baseline-vue-app:
 
 
 baseline-react-app:
-  enabled: true
+  enabled: false
   service:
     type: ClusterIP
     port: 80
@@ -99,7 +99,7 @@ baseline-react-app:
 
 
 python-docs-hello-world:
-  enabled: true
+  enabled: false
   service:
     type: ClusterIP
     port: 80
