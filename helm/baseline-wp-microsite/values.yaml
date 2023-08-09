@@ -4,18 +4,14 @@
 
 replicaCount: 1
 
-global:
-  imagePullSecrets:
-    - name: docker-push-user
-
 image:
   repository: krumware/baseline-wp-microsite-nuxt
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
-imagePullSecrets:
-  - name: image-pull-secret
+imagePullSecrets: []
+
 nameOverride: ""
 fullnameOverride: ""
 
