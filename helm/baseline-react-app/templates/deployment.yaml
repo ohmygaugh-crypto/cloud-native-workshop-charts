@@ -40,10 +40,16 @@ spec:
             httpGet:
               path: /
               port: {{ .Values.service.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            failureThreshold: 10
           readinessProbe:
             httpGet:
               path: /
               port: {{ .Values.service.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            failureThreshold: 10
           env: 
             {{- toYaml .Values.env | nindent 12 }}
           resources:
